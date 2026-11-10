@@ -6,11 +6,11 @@
 
 **▶ Live:** `https://leh-chalo-ustaad.pages.dev` *(replace with your link)*
 
-<<<<<<< HEAD
+
 **Made by Flux** · [GitHub @ashutoshpandey15](https://github.com/ashutoshpandey15) · [Instagram @ashutosh.pandey_15](https://www.instagram.com/ashutosh.pandey_15/)
 
 =======
->>>>>>> 0470794a46a7dee3b858153b001f3fe7cd5419a8
+
 ---
 
 ## ✨ Features
@@ -128,8 +128,8 @@ The photos were resized and compressed for the web. The truck, road, mountains a
 
 ---
 
-<<<<<<< HEAD
+
 Made with ❤️ by **Flux** ([@ashutoshpandey15](https://github.com/ashutoshpandey15) · [@ashutosh.pandey_15](https://www.instagram.com/ashutosh.pandey_15/)) for every ustaad on the highway. **Horn OK Please.** 🚛
 =======
 Made with ❤️ for every ustaad on the highway. **Horn OK Please.** 🚛
->>>>>>> 0470794a46a7dee3b858153b001f3fe7cd5419a8
+
