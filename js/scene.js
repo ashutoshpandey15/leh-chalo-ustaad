@@ -58,9 +58,13 @@ const Scene = (() => {
     }
     return STOPS[STOPS.length - 1].alt;
   }
-  function clockAt(k) {
-    const mins = 370 + (k / ROUTE_KM) * 1970;     // 6:10 AM day 1 → ~3 PM day 2
-    return { mins, hr: (mins / 60) % 24, day: mins >= 1440 ? 2 : 1 };
+  // Real Indian time (IST = UTC+5:30, no daylight saving), whatever the visitor's own timezone.
+  // The sky, stars, sunset glow and photo tint all follow it.
+  function clockAt() {
+    const d = new Date();
+    let mins = (d.getUTCHours() * 60 + d.getUTCMinutes() + d.getUTCSeconds() / 60 + 330) % 1440;
+    if (typeof st.istOverride === 'number') mins = st.istOverride;   // testing only
+    return { mins, hr: mins / 60 };
   }
 
   /* ---------- setup ---------- */
@@ -880,7 +884,7 @@ const Scene = (() => {
   /* ---------- public ---------- */
   function info() {
     const k = kmNow(), c = clockAt(k);
-    return { km: k, kmLeft: Math.max(0, ROUTE_KM - k), alt: altAt(k), hr: c.hr, mins: c.mins, day: c.day, speed: st.speed, mult: st.mult, arrived: st.arrived };
+    return { km: k, kmLeft: Math.max(0, ROUTE_KM - k), alt: altAt(k), hr: c.hr, mins: c.mins, speed: st.speed, mult: st.mult, arrived: st.arrived };
   }
   function set(p) { Object.assign(st, p); }
   function reset() {

@@ -88,7 +88,7 @@
   function clockText(i) {
     const mins = Math.floor(i.mins) % 1440, h = Math.floor(mins / 60), mi = mins % 60;
     const h12 = ((h + 11) % 12) + 1;
-    return `DIN ${i.day} · ${partOfDay(i.hr)} ${h12}:${String(mi).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'}`;
+    return `${partOfDay(i.hr)} ${h12}:${String(mi).padStart(2, '0')} ${h < 12 ? 'AM' : 'PM'} · IST`;
   }
   function setStop(stop) {
     $('#stopName').textContent = stop.en;
