@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Leh Chalo Ustaad</title>
+  <meta name="description" content="Truck mein baitho, Manali se Leh chalo. Ustaad ki playlist, pressure horn, dhaba ki Maggi aur 5 pass. A fun little road trip for your browser.">
+  <meta name="theme-color" content="#120c26">
+  <meta property="og:title" content="Leh Chalo Ustaad 🚛">
+  <meta property="og:description" content="Manali → Leh, 474 km, truck ki seat se. Horn OK Please.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚛</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Bungee&family=Rozha+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body>
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <!-- ============ INTRO ============ -->
+  <section id="intro" class="intro">
+    <div class="intro-bg" aria-hidden="true"><div class="bg"></div><div class="bg"></div></div>
+    <div class="intro-inner">
+      <canvas id="introTruck" width="520" height="310" aria-label="Sajaa hua truck"></canvas>
+      <p class="eyebrow">MANALI → LEH · 474 KM · 5 PASS · 1 USTAAD</p>
+      <h1 class="intro-title">लेह चलें, उस्ताद?</h1>
+      <p class="intro-sub">चाय पी ली, टायर चेक कर लिए, मैगी पैक कर ली. खलासी पीछे लटका है — आप आगे आ जाओ.</p>
+      <p id="sharedNote" class="shared-note" hidden></p>
+      <button id="startBtn" class="btn-big" type="button">Chalo Ustaad — Gaadi Nikalo</button>
+      <p class="intro-hint">HEADPHONE LAGA LO · USTAAD KA SPEAKER FULL VOLUME PE HAI</p>
+      <button type="button" id="introWalls" class="linkish intro-walls">🖼 Truck wallpapers dekho</button>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+    <a id="introCredit" class="photo-credit" href="#" target="_blank" rel="noopener"></a>
+  </section>
+
+  <!-- ============ APP ============ -->
+  <main id="app" class="app" hidden>
+    <header class="top">
+      <p class="kicker">— <span id="clock">DIN 1 · SUBAH 6:10 AM</span> —</p>
+      <h1 class="title">LEH CHALO USTAAD</h1>
+      <p class="subtitle">धीरे चलो, पहाड़ जल्दी में नहीं है.</p>
+    </header>
+
+    <div id="quote" class="quote" aria-live="polite">
+      <small id="quoteWho">USTAAD BOLE</small>
+      <p id="quoteText">सेब की खुशबू, मॉल रोड की भीड़ — यहीं से सफ़र शुरू.</p>
+    </div>
+
+    <!-- left: bhada / dhaba card -->
+    <aside class="card ledger" aria-label="Bhada aur dhaba">
+      <div class="tabs" role="tablist">
+        <button type="button" data-tab="bhada" class="on">Bhada</button>
+        <button type="button" data-tab="dhaba">Dhaba Menu</button>
+        <button type="button" id="ledgerClose" class="sheet-close" aria-label="Band karo">✕</button>
+      </div>
+      <div id="tab-bhada">
+        <div class="fare"><span class="rs">₹</span><b>42,000</b><small>BHADA</small></div>
+        <ul class="rows">
+          <li><span>Manali → Leh</span><b>₹42,000</b></li>
+          <li><span>Advance mila</span><b>−₹10,000</b></li>
+          <li><span>Leh pe milega</span><b>₹32,000</b></li>
+        </ul>
+        <p class="cargo"><small>MAAL</small>Army ration · cement · 400 peti Maggi</p>
+        <div class="meter">
+          <div class="meter-top"><small>DIESEL</small><b><span id="diesel">100</span>%</b></div>
+          <div class="bar"><i id="dieselBar" style="width:100%"></i></div>
+        </div>
+        <p class="note">Horn bajaya: <b id="hornCount">0</b> baar. Toll nahi hai, permit ki parchi sambhalo.</p>
+      </div>
+      <div id="tab-dhaba" hidden>
+        <h3 id="dhabaName">Dhaba</h3>
+        <p class="dhaba-alt" id="dhabaAlt"></p>
+        <ul class="rows" id="menu"></ul>
+        <p class="note" id="menuNote"></p>
+      </div>
+    </aside>
+
+    <!-- right: online + now passing -->
+    <div class="side-right">
+      <div class="pills">
+        <span class="pill"><i class="dot"></i><b id="onlineCount">1,284</b>&nbsp;ustaad road pe</span>
+        <button type="button" class="pill pill-btn" id="shareBtn">↗ Share</button>
+      </div>
+      <aside class="card now" aria-live="polite">
+        <small>AB GUZAR RAHE HAIN</small>
+        <h2 id="stopName">MANALI</h2>
+        <p id="stopHindi" class="hindi">मनाली</p>
+        <div class="stats">
+          <span><small>ALT</small><b id="alt">2,050</b> m</span>
+          <span><small>LEH</small><b id="kmLeft">474</b> km</span>
+          <span><small>SPEED</small><b id="speed">0</b> km/h</span>
+        </div>
+        <div class="meter o2">
+          <div class="meter-top"><small>HAWA MEIN OXYGEN</small><b><span id="o2">77</span>%</b></div>
+          <div class="bar"><i id="o2bar" style="width:77%"></i></div>
+        </div>
+        <a id="photoCredit" class="photo-credit-now" href="#" target="_blank" rel="noopener" hidden></a>
+      </aside>
+    </div>
+
+    <!-- controls -->
+    <div class="card controls">
+      <div class="ctrl-grid">
+        <button type="button" id="btnLights" class="tg" aria-pressed="false"><span class="ic">💡</span><span>Lights</span></button>
+        <button type="button" id="btnDisco" class="tg" aria-pressed="false"><span class="ic">🪩</span><span>Disco</span></button>
+        <button type="button" id="btnEngine" class="tg on" aria-pressed="true"><span class="ic">⚙️</span><span>Engine</span></button>
+        <button type="button" id="btnTune" class="tg"><span class="ic">🎺</span><span>Tune</span></button>
+        <button type="button" id="btnPaint" class="tg hot"><span class="ic">🎨</span><span>Sajao</span></button>
+        <button type="button" id="btnWalls" class="tg"><span class="ic">🖼️</span><span>Wallpapers</span></button>
+        <button type="button" id="btnLedger" class="tg only-mobile"><span class="ic">📋</span><span>Bhada</span></button>
+        <button type="button" id="btnPhoto" class="tg on span2" aria-pressed="true"><span class="ic">🏞️</span><span>Asli Photo View</span></button>
+      </div>
+      <div class="speed-row">
+        <button type="button" id="btnSlower" aria-label="Dheere">−</button>
+        <span>GEAR</span>
+        <button type="button" id="btnFaster" aria-label="Tez">+</button>
+      </div>
+      <ul class="keys">
+        <li><kbd>H</kbd>horn (hold)</li>
+        <li><kbd>T</kbd>tune horn</li>
+        <li><kbd>L</kbd>lights</li>
+        <li><kbd>D</kbd>disco</li>
+        <li><kbd>E</kbd>engine</li>
+        <li><kbd>↑↓</kbd>speed</li>
+        <li><kbd>C</kbd>sajao</li>
+        <li><kbd>Space</kbd>play</li>
+        <li><kbd>M</kbd>apna gaana</li>
+        <li><kbd>W</kbd>wallpapers</li>
+        <li><kbd>Y</kbd>nayi playlist</li>
+        <li><kbd>B</kbd>photo / art</li>
+      </ul>
+    </div>
+
+    <button type="button" id="horn" class="horn" aria-label="Horn — dabaa ke rakho"><span>HORN</span><b>OK</b><span>PLEASE</span></button>
+
+    <!-- player -->
+    <section class="card player" aria-label="Ustaad ka speaker">
+      <div class="tv"><div id="yt"></div><span class="tv-label">CABIN TV</span></div>
+      <div id="spotifyMount" class="sp-mount"></div>
+      <div class="meta">
+        <small><i class="dot"></i><span id="srcLabel">USTAAD KA SPEAKER</span>&nbsp;· <span id="spkState">OFF</span></small>
+        <h3 id="trackTitle">—</h3>
+        <p id="trackArtist">—</p>
+      </div>
+      <div class="transport">
+        <button type="button" id="prev" aria-label="Pichhla gaana"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+        <button type="button" id="play" class="play" aria-label="Play">
+          <svg class="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>
+          <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+        </button>
+        <button type="button" id="next" aria-label="Agla gaana"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+        <button type="button" id="musicBtn" class="own" aria-label="Apna gaana — Spotify ya YouTube link"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm4.6 14.4a.6.6 0 0 1-.9.2c-2.4-1.5-5.4-1.8-9-1a.6.6 0 1 1-.3-1.2c3.9-.9 7.2-.5 9.9 1.1.3.2.4.6.3.9zm1.2-2.7a.8.8 0 0 1-1.1.3c-2.8-1.7-7-2.2-10.2-1.2a.8.8 0 0 1-.5-1.5c3.7-1.1 8.3-.6 11.5 1.4.4.2.5.7.3 1zm.1-2.8C14.6 9 9.2 8.8 6.1 9.8a.9.9 0 1 1-.5-1.8c3.6-1.1 9.5-.9 13.2 1.3a.9.9 0 0 1-.9 1.6z"/></svg></button>
+        <button type="button" id="listBtn" aria-label="Playlist"><svg viewBox="0 0 24 24"><path d="M3 6h13v2H3zm0 5h13v2H3zm0 5h9v2H3zm15-5v6.2A3 3 0 1 0 20 20v-7h2v-2z"/></svg></button>
+      </div>
+      <div class="progress">
+        <span id="tCur">0:00</span>
+        <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Gaane mein aage-peeche">
+        <span id="tDur">0:00</span>
+        <label class="vol"><span aria-hidden="true">🔊</span><input type="range" id="vol" min="0" max="100" value="80" aria-label="Volume"></label>
+      </div>
+    </section>
+
+    <aside id="playlist" class="card drawer" hidden>
+      <header><div><small>USTAAD KI CASSETTE</small><h3 id="drawerTitle">Side A</h3></div><button type="button" id="playlistClose" aria-label="Band karo">✕</button></header>
+      <div class="dtabs" role="tablist">
+        <button type="button" role="tab" data-dtab="a">📼 Side A</button>
+        <button type="button" role="tab" data-dtab="b">📼 Side B</button>
+        <button type="button" role="tab" data-dtab="mine">❤ Meri</button>
+      </div>
+      <div id="drawerBody" class="drawer-body"></div>
+      <button type="button" id="playlistOwn" class="own-row sp-row">🎧 Spotify / YouTube link lagao</button>
+      <p class="credit">Songs play from YouTube. "+" dabao, apni playlist banao, doston ko bhejo.</p>
+    </aside>
+
+    <!-- arrival -->
+    <div id="arrival" class="overlay" hidden>
+      <div class="card arrival-card">
+        <p class="eyebrow">474 KM · 5 PASS · 21 MOD</p>
+        <h2>जुले! लेह पहुँच गए.</h2>
+        <p class="sub">उस्ताद ने आपको ड्राइवर की सीट ऑफ़र की है. सोच लो.</p>
+        <div class="stat-grid">
+          <div><b id="statHorns">0</b><small>baar horn</small></div>
+          <div><b id="statMaggi">0</b><small>dhabe ki Maggi</small></div>
+          <div><b id="statSongs">0</b><small>gaane suney</small></div>
+          <div><b id="statTime">0</b><small>road pe</small></div>
+        </div>
+        <div class="btn-row">
+          <button type="button" id="arrShare" class="btn-big">Doston ko bhejo</button>
+          <button type="button" id="arrPaint" class="btn-ghost">🎨 Truck Sajao</button>
+          <button type="button" id="arrAgain" class="btn-ghost">↺ Wapas Manali</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- truck art customiser -->
+  <dialog id="paintModal" class="paint">
+    <div class="paint-inner">
+      <div class="paint-canvas"><canvas id="backCanvas" width="540" height="680"></canvas></div>
+      <div class="paint-form">
+        <header><div><small>TRUCK ART STUDIO</small><h2>Truck Sajao</h2></div><button type="button" id="paintClose" aria-label="Band karo">✕</button></header>
+        <label class="lbl">Peeche kya likhwaoge?</label>
+        <div id="sloganChips" class="chips"></div>
+        <input id="customSlogan" maxlength="40" placeholder="Ya apna likho… (max 40)" autocomplete="off">
+        <div class="two">
+          <div><label class="lbl" for="ustaadName">Ustaad ka naam</label><input id="ustaadName" maxlength="12" placeholder="e.g. Pappu" autocomplete="off"></div>
+          <div><label class="lbl" for="plateNo">Number plate</label><input id="plateNo" maxlength="13" placeholder="HP 66 LC 474" autocomplete="off"></div>
+        </div>
+        <label class="lbl">Rang</label>
+        <div id="paletteChips" class="swatches"></div>
+        <div class="btn-row">
+          <button type="button" id="paintApply" class="btn-big">Truck pe lagao</button>
+          <button type="button" id="paintDownload" class="btn-ghost">⬇ PNG</button>
+          <button type="button" id="paintShare" class="btn-ghost">↗ Share</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- music: paste a link / connect Spotify -->
+  <dialog id="musicDialog" class="paint music">
+    <div class="music-inner">
+      <header><div><small>APNA GAANA</small><h2>Ustaad, aaj kya bajega?</h2></div><button type="button" id="musicClose" aria-label="Band karo">✕</button></header>
+      <label class="lbl" for="musicLink">Link paste karo</label>
+      <div class="link-row">
+        <input id="musicLink" placeholder="Spotify ya YouTube playlist ka link yahan paste karo" autocomplete="off" inputmode="url">
+        <button type="button" id="musicGo" class="btn-big">Bajao</button>
+      </div>
+      <p id="musicErr" class="err" role="alert"></p>
+      <p class="hint">Spotify playlist, album, gaana ya artist · YouTube video ya playlist — sab chalega.</p>
+      <label class="lbl">Spotify se connect karo</label>
+      <div id="spBox"></div>
+      <button type="button" id="musicCassette" class="btn-ghost back-cassette">📼 Wapas Ustaad ki cassette</button>
+    </div>
+  </dialog>
+
+  <!-- wallpapers gallery -->
+  <!-- build / edit your own playlist -->
+  <dialog id="plDialog" class="paint pl-builder">
+    <div class="music-inner">
+      <header><div><small>APNI PLAYLIST BANAO</small><h2 id="plDlgTitle">Nayi Playlist</h2></div><button type="button" id="plClose" aria-label="Band karo">✕</button></header>
+      <label class="lbl" for="plName">Playlist ka naam</label>
+      <input id="plName" maxlength="30" placeholder="e.g. Pappu ki Raat Wali Drive" autocomplete="off">
+      <div class="pl-cols">
+        <div class="pl-col">
+          <label class="lbl" for="plSearch">Gaane chuno</label>
+          <input id="plSearch" type="search" placeholder="Search… Kumar Sanu, Pardesi, Tere Naam" autocomplete="off">
+          <div class="seg" role="group" aria-label="Kis side se">
+            <button type="button" data-src="all" class="on">Sab</button>
+            <button type="button" data-src="a">Side A</button>
+            <button type="button" data-src="b">Side B</button>
+          </div>
+          <ul id="plPick" class="pick"></ul>
+        </div>
+        <div class="pl-col">
+          <p class="lbl">Aapki playlist · <span id="plCount">0</span> gaane</p>
+          <ol id="plChosen" class="chosen"></ol>
+        </div>
+      </div>
+      <p id="plErr" class="err" role="alert"></p>
+      <div class="btn-row">
+        <button type="button" id="plSavePlay" class="btn-big">Save &amp; Bajao</button>
+        <button type="button" id="plSave" class="btn-ghost">Save</button>
+        <button type="button" id="plDelete" class="btn-ghost danger" hidden>🗑 Delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="wallDialog" class="paint walls">
+    <div class="music-inner">
+      <header><div><small>INDIAN TRUCK WALLPAPERS</small><h2>Sadak ki Shaan</h2></div><button type="button" id="wallClose" aria-label="Band karo">✕</button></header>
+      <div id="wallGrid" class="wall-grid"></div>
+      <p class="hint">Photos from Wikimedia Commons under Creative Commons licences. Credit the photographer when you share.</p>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="js/config.js?v=10"></script>
+  <script src="js/songs.js?v=10"></script>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/audio.js?v=10"></script>
+  <script src="js/scene.js?v=10"></script>
+  <script src="js/customizer.js?v=10"></script>
+  <script src="js/music.js?v=10"></script>
+  <script src="js/app.js?v=10"></script>
+  <script src="https://www.youtube.com/iframe_api" async></script>
+</body>
+</html>
