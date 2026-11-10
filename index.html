@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Leh Chalo Ustaad</title>
   <meta name="description" content="Truck mein baitho, Manali se Leh chalo. Ustaad ki playlist, pressure horn, dhaba ki Maggi aur 5 pass. A fun little road trip for your browser.">
+  <meta name="author" content="Flux (Ashutosh Pandey)">
   <meta name="theme-color" content="#120c26">
   <meta property="og:title" content="Leh Chalo Ustaad 🚛">
   <meta property="og:description" content="Manali → Leh, 474 km, truck ki seat se. Horn OK Please.">
@@ -13,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Bungee&family=Rozha+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=10">
+  <link rel="stylesheet" href="css/style.css?v=11">
 </head>
 <body>
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -30,6 +31,7 @@
       <button id="startBtn" class="btn-big" type="button">Chalo Ustaad — Gaadi Nikalo</button>
       <p class="intro-hint">HEADPHONE LAGA LO · USTAAD KA SPEAKER FULL VOLUME PE HAI</p>
       <button type="button" id="introWalls" class="linkish intro-walls">🖼 Truck wallpapers dekho</button>
+      <p class="made-by">Banaya hai <b>Flux</b> ne 🛠️ <a href="https://github.com/ashutoshpandey15" target="_blank" rel="noopener" aria-label="Flux on GitHub"><svg class="si" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><a href="https://www.instagram.com/ashutosh.pandey_15/" target="_blank" rel="noopener" aria-label="Flux on Instagram"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg><span>Instagram</span></a></p>
     </div>
     <div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
     <a id="introCredit" class="photo-credit" href="#" target="_blank" rel="noopener"></a>
@@ -83,6 +85,7 @@
         <span class="pill"><i class="dot"></i><b id="onlineCount">1,284</b>&nbsp;ustaad road pe</span>
         <button type="button" class="pill pill-btn" id="shareBtn">↗ Share</button>
       </div>
+      <div class="made-pill">by <b>Flux</b><a href="https://github.com/ashutoshpandey15" target="_blank" rel="noopener" aria-label="Flux on GitHub"><svg class="si" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><a href="https://www.instagram.com/ashutosh.pandey_15/" target="_blank" rel="noopener" aria-label="Flux on Instagram"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg><span>Instagram</span></a></div>
       <aside class="card now" aria-live="polite">
         <small>AB GUZAR RAHE HAIN</small>
         <h2 id="stopName">MANALI</h2>
@@ -191,6 +194,7 @@
           <button type="button" id="arrPaint" class="btn-ghost">🎨 Truck Sajao</button>
           <button type="button" id="arrAgain" class="btn-ghost">↺ Wapas Manali</button>
         </div>
+        <p class="made-by arr">Made with ❤️ by <b>Flux</b> <a href="https://github.com/ashutoshpandey15" target="_blank" rel="noopener" aria-label="Flux on GitHub"><svg class="si" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a><a href="https://www.instagram.com/ashutosh.pandey_15/" target="_blank" rel="noopener" aria-label="Flux on Instagram"><svg class="si" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg><span>Instagram</span></a></p>
       </div>
     </div>
   </main>
@@ -278,14 +282,14 @@
 
   <div id="toast" class="toast" role="status"></div>
 
-  <script src="js/config.js?v=10"></script>
-  <script src="js/songs.js?v=10"></script>
-  <script src="js/data.js?v=10"></script>
-  <script src="js/audio.js?v=10"></script>
-  <script src="js/scene.js?v=10"></script>
-  <script src="js/customizer.js?v=10"></script>
-  <script src="js/music.js?v=10"></script>
-  <script src="js/app.js?v=10"></script>
+  <script src="js/config.js?v=11"></script>
+  <script src="js/songs.js?v=11"></script>
+  <script src="js/data.js?v=11"></script>
+  <script src="js/audio.js?v=11"></script>
+  <script src="js/scene.js?v=11"></script>
+  <script src="js/customizer.js?v=11"></script>
+  <script src="js/music.js?v=11"></script>
+  <script src="js/app.js?v=11"></script>
   <script src="https://www.youtube.com/iframe_api" async></script>
 </body>
 </html>

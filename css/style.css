@@ -497,3 +497,17 @@ input[type=range] { accent-color: var(--saffron); width: 100%; height: 18px; mar
 @media (max-width: 760px) {
   .now .photo-credit-now { grid-column: 1 / -1; margin-top: 4px; font-size: 9.5px; }
 }
+
+/* ============ MADE BY FLUX ============ */
+.si { width: 14px; height: 14px; fill: currentColor; flex: 0 0 auto; }
+.made-by { margin: 14px 0 0; font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 8px; }
+.made-by b { color: var(--yellow); font-family: var(--f-display); font-weight: 400; letter-spacing: 0.04em; }
+.made-by a, .made-pill a { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 12px; }
+.made-by a:hover, .made-pill a:hover { background: rgba(255, 255, 255, 0.18); }
+.made-by a[aria-label*="Instagram"]:hover, .made-pill a[aria-label*="Instagram"]:hover { background: linear-gradient(90deg, #f9ce34, #ee2a7b, #6228d7); border-color: transparent; }
+.made-by.arr { margin-top: 16px; }
+.made-pill { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-size: 12px; color: var(--muted); }
+.made-pill b { color: var(--yellow); font-family: var(--f-display); font-weight: 400; margin-right: 2px; }
+.made-pill a { padding: 4px 8px; background: var(--card); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.made-pill a span { display: none; }
+@media (max-width: 760px) { .made-pill { display: none; } }
