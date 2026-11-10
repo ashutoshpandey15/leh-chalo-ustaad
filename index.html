@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Bungee&family=Rozha+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=12">
+  <link rel="stylesheet" href="css/style.css?v=16">
 </head>
 <body>
   <canvas id="scene" aria-hidden="true"></canvas>
@@ -120,20 +120,23 @@
         <span>GEAR</span>
         <button type="button" id="btnFaster" aria-label="Tez">+</button>
       </div>
-      <ul class="keys">
-        <li><kbd>H</kbd>horn (hold)</li>
-        <li><kbd>T</kbd>tune horn</li>
-        <li><kbd>L</kbd>lights</li>
-        <li><kbd>D</kbd>disco</li>
-        <li><kbd>E</kbd>engine</li>
-        <li><kbd>↑↓</kbd>speed</li>
-        <li><kbd>C</kbd>sajao</li>
-        <li><kbd>Space</kbd>play</li>
-        <li><kbd>M</kbd>apna gaana</li>
-        <li><kbd>W</kbd>wallpapers</li>
-        <li><kbd>Y</kbd>nayi playlist</li>
-        <li><kbd>B</kbd>photo / art</li>
-      </ul>
+      <details class="keys-wrap">
+        <summary>⌨ Keyboard shortcuts</summary>
+        <ul class="keys">
+          <li><kbd>H</kbd>horn (hold)</li>
+          <li><kbd>T</kbd>tune horn</li>
+          <li><kbd>L</kbd>lights</li>
+          <li><kbd>D</kbd>disco</li>
+          <li><kbd>E</kbd>engine</li>
+          <li><kbd>↑↓</kbd>speed</li>
+          <li><kbd>C</kbd>sajao</li>
+          <li><kbd>Space</kbd>play</li>
+          <li><kbd>M</kbd>apna gaana</li>
+          <li><kbd>W</kbd>wallpapers</li>
+          <li><kbd>Y</kbd>nayi playlist</li>
+          <li><kbd>B</kbd>photo / art</li>
+        </ul>
+      </details>
     </div>
 
     <button type="button" id="horn" class="horn" aria-label="Horn — dabaa ke rakho"><span>HORN</span><b>OK</b><span>PLEASE</span></button>
@@ -282,14 +285,14 @@
 
   <div id="toast" class="toast" role="status"></div>
 
-  <script src="js/config.js?v=12"></script>
-  <script src="js/songs.js?v=12"></script>
-  <script src="js/data.js?v=12"></script>
-  <script src="js/audio.js?v=12"></script>
-  <script src="js/scene.js?v=12"></script>
-  <script src="js/customizer.js?v=12"></script>
-  <script src="js/music.js?v=12"></script>
-  <script src="js/app.js?v=12"></script>
+  <script src="js/config.js?v=16"></script>
+  <script src="js/songs.js?v=16"></script>
+  <script src="js/data.js?v=16"></script>
+  <script src="js/audio.js?v=16"></script>
+  <script src="js/scene.js?v=16"></script>
+  <script src="js/customizer.js?v=16"></script>
+  <script src="js/music.js?v=16"></script>
+  <script src="js/app.js?v=16"></script>
   <script src="https://www.youtube.com/iframe_api" async></script>
 </body>
 </html>

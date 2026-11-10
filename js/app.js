@@ -54,12 +54,17 @@
   }
   function measureInset() {
     document.documentElement.style.setProperty('--player-h', $('.player').offsetHeight + 'px');
+    document.documentElement.style.setProperty('--controls-h', $('.controls').offsetHeight + 'px');
     const els = isMobile() ? [$('.controls'), $('.player')] : [$('.player')];
     const top = Math.min(...els.map((e) => e.getBoundingClientRect().top));
     Scene.setBottomInset(innerHeight - top + (isMobile() ? 18 : 34));
   }
   addEventListener('resize', () => { if (G.started) measureInset(); });
-  if (window.ResizeObserver) new ResizeObserver(() => { if (G.started) measureInset(); }).observe($('.player'));
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => { if (G.started) measureInset(); });
+    ro.observe($('.player')); ro.observe($('.controls'));
+  }
+  $('.keys-wrap').addEventListener('toggle', () => { if (G.started) measureInset(); });
 
   /* ---------- quotes ---------- */
   function say(who, text, lockSec = 9) {
@@ -362,6 +367,7 @@
     $('#intro').classList.add('gone');
     $('#app').hidden = false;
     setTimeout(() => { cancelAnimationFrame(introRaf); $('#intro').hidden = true; }, 700);
+    measureInset();                                   // layout is ready now that #app is visible
     requestAnimationFrame(() => { measureInset(); Scene.start(); });
     setStop(STOPS[0]);
     say('USTAAD BOLE', STOPS[0].line, 8);
